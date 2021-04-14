@@ -1,6 +1,6 @@
 # RT-Thread 内存隔离沙箱
 
-本沙箱改编自FreeRTOS heap4内存分配算法。
+本沙箱改编自FreeRTOS heap4内存分配算法 (Dec 15, 2020)。
 
 
 
@@ -54,7 +54,7 @@ unsigned char *p = mem_sandbox_malloc(sandbox, 200); //从沙箱中分配200字�
 
 mem_sandbox_free(sandbox, p); //将这块内存释放回沙箱中
 
-mem_sandbox_delete(sandbox); //销毁这个沙箱，沙箱的10KB内存交回给RT-Thread内存管理函数进行管理
+mem_sandbox_delete(sandbox); //销毁这个沙箱，沙箱的10KB内存交回给RT-Thread进行管理
 ```
 
 

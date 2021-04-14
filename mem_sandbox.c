@@ -110,7 +110,7 @@ void * mem_sandbox_malloc(mem_sandbox_t p_sandbox, rt_size_t xWantedSize) /*pvPo
         {
             /* The wanted size must be increased so it can contain a BlockLink_t
              * structure in addition to the requested amount of bytes. */
-            if( ( xWantedSize > 0 ) && 
+            if( ( xWantedSize > 0 ) &&
                 ( ( xWantedSize + xHeapStructSize ) >  xWantedSize ) ) /* Overflow check */
             {
                 xWantedSize += xHeapStructSize;
@@ -119,7 +119,7 @@ void * mem_sandbox_malloc(mem_sandbox_t p_sandbox, rt_size_t xWantedSize) /*pvPo
                 if( ( xWantedSize & portBYTE_ALIGNMENT_MASK ) != 0x00 )
                 {
                     /* Byte alignment required. Check for overflow. */
-                    if( ( xWantedSize + ( portBYTE_ALIGNMENT - ( xWantedSize & portBYTE_ALIGNMENT_MASK ) ) ) 
+                    if( ( xWantedSize + ( portBYTE_ALIGNMENT - ( xWantedSize & portBYTE_ALIGNMENT_MASK ) ) )
                             > xWantedSize )
                     {
                         xWantedSize += ( portBYTE_ALIGNMENT - ( xWantedSize & portBYTE_ALIGNMENT_MASK ) );
@@ -128,17 +128,17 @@ void * mem_sandbox_malloc(mem_sandbox_t p_sandbox, rt_size_t xWantedSize) /*pvPo
                     else
                     {
                         xWantedSize = 0;
-                    }  
+                    }
                 }
-            } 
-            else 
+            }
+            else
             {
                 xWantedSize = 0;
             }
 
             if( ( xWantedSize > 0 ) && ( xWantedSize <= p_sandbox->xFreeBytesRemaining ) )
             {
-                /* Traverse the list from the start	(lowest address) block until
+                /* Traverse the list from the start (lowest address) block until
                  * one of adequate size is found. */
                 pxPreviousBlock = &p_sandbox->xStart;
                 pxBlock = p_sandbox->xStart.pxNextFreeBlock;
