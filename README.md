@@ -8,7 +8,7 @@
 
 在向RT-Thread移植一些Linux的库时，由于Linux采用的是进程，在进程结束后，Linux会自动回收malloc出去的内存，因此一部分Linux软件库并不太注重内存的回收，此问题尤其表现在一些和终端相关的程序上。然而，RT-Thread并没有进程的概念，如果直接将Linux软件库直接移植到RT-Thread上，运行是可以运行，但是有可能存在内存泄漏的情况，而且泄漏位置很隐蔽，极难查找。因此本沙箱提供了一种比较快捷省事的解决内存泄漏的方案，即在运行Linux软件库之前，先创建一个沙箱，沙箱会申请一块内存，并接管这块内存。然后让Linux软件在沙箱中运行，由沙箱负责为给软件分配和释放内存，因此即便这个软件存在内存泄漏问题，也是在沙箱里边泄漏，等软件执行完，将沙箱一销毁，被沙箱接管的那一大块内存又交还给了RT-Thread，因此内存泄漏问题就直接解决了。
 
-应用范例：[RT-Thread vi编辑器软件包](https://github.com/RT-Thread-packages/vi)
+应用范例：[RT-Thread vi编辑器软件包](https://github.com/RT-Thread-packages/vi)  [RT-Thread ki编辑器软件包](https://github.com/mysterywolf/ki)
 
 
 
@@ -25,6 +25,7 @@ mem_sandbox_t mem_sandbox_create(rt_size_t sandbox_size); //创建一个沙箱
 void mem_sandbox_delete(mem_sandbox_t p_sandbox); //销毁一个沙箱
 void * mem_sandbox_malloc(mem_sandbox_t p_sandbox, rt_size_t xWantedSize); //从沙箱中分配内存 malloc
 void *mem_sandbox_realloc(mem_sandbox_t p_sandbox, void * ptr, rt_size_t size); //从沙箱中分配内存 realloc
+void *mem_sandbox_calloc(mem_sandbox_t p_sandbox, rt_size_t count, rt_size_t size); //从沙箱中分配内存 calloc
 void mem_sandbox_free(mem_sandbox_t p_sandbox, void * pv); //从沙箱中释放内存 free
 rt_size_t mem_sandbox_get_free_size(mem_sandbox_t p_sandbox); //获取沙箱当前剩余的内存大小(字节)
 rt_size_t mem_sandbox_get_min_free_size(mem_sandbox_t p_sandbox); //获取沙箱历史最低剩余内存大小(字节)

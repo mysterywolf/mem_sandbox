@@ -58,6 +58,7 @@ mem_sandbox_t mem_sandbox_create(rt_size_t sandbox_size);
 void mem_sandbox_delete(mem_sandbox_t p_sandbox);
 void * mem_sandbox_malloc(mem_sandbox_t p_sandbox, rt_size_t xWantedSize);
 void *mem_sandbox_realloc(mem_sandbox_t p_sandbox, void * ptr, rt_size_t size);
+void *mem_sandbox_calloc(mem_sandbox_t p_sandbox, rt_size_t count, rt_size_t size);
 void mem_sandbox_free(mem_sandbox_t p_sandbox, void * pv);
 rt_size_t mem_sandbox_get_free_size(mem_sandbox_t p_sandbox);
 rt_size_t mem_sandbox_get_min_free_size(mem_sandbox_t p_sandbox);

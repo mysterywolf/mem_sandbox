@@ -434,6 +434,20 @@ void *mem_sandbox_realloc(mem_sandbox_t p_sandbox, void * ptr, rt_size_t size)
     return new_ptr;
 }
 
+void *mem_sandbox_calloc(mem_sandbox_t p_sandbox, rt_size_t count, rt_size_t size)
+{
+    void *p;
+
+    /* allocate 'count' objects of size 'size' */
+    p = mem_sandbox_malloc(p_sandbox, count * size);
+
+    /* zero the memory */
+    if (p)
+        rt_memset(p, 0, count * size);
+
+    return p;
+}
+
 char *mem_sandbox_strdup(mem_sandbox_t p_sandbox, const char *s)
 {
     rt_size_t len = rt_strlen(s) + 1;
