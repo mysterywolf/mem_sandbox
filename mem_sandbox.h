@@ -7,7 +7,7 @@
 #ifndef __MEM_SANDBOX_H__
 #define __MEM_SANDBOX_H__
 
-#include <rtthread.h>
+#include <rtdef.h>
 
 /* Define the linked list structure.  This is used to link free blocks in order
  * of their memory address. */
@@ -64,6 +64,6 @@ rt_size_t mem_sandbox_get_free_size(mem_sandbox_t p_sandbox);
 rt_size_t mem_sandbox_get_min_free_size(mem_sandbox_t p_sandbox);
 void mem_sandbox_get_stats(mem_sandbox_t p_sandbox, HeapStats_t *pxHeapStats);
 char *mem_sandbox_strdup(mem_sandbox_t p_sandbox, const char *s);
-char *mem_sandbox_strndup(mem_sandbox_t p_sandbox, const char *s, size_t n);
+char *mem_sandbox_strndup(mem_sandbox_t p_sandbox, const char *s, rt_size_t n);
 
 #endif

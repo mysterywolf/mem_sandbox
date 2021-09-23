@@ -39,6 +39,7 @@
  * memory management pages of https://www.FreeRTOS.org for more information.
  */
 
+#include <rtthread.h>
 #include "mem_sandbox.h"
 
 #define portBYTE_ALIGNMENT          RT_ALIGN_SIZE
@@ -461,7 +462,7 @@ char *mem_sandbox_strdup(mem_sandbox_t p_sandbox, const char *s)
     return tmp;
 }
 
-char *mem_sandbox_strndup(mem_sandbox_t p_sandbox, const char *s, size_t n)
+char *mem_sandbox_strndup(mem_sandbox_t p_sandbox, const char *s, rt_size_t n)
 {
     char* new = mem_sandbox_malloc(p_sandbox, n+1);
     if (new)
