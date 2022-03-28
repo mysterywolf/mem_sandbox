@@ -1,7 +1,11 @@
 /*
+ * Copyright (c) 2021, Meco Jianting Man <jiantingman@foxmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
  * Change Logs:
  * Date           Author       Notes
- * 2018-11-06     Meco Man     port to RT-Thread
+ * 2021-04-14     Meco Man     port to RT-Thread
  */
 
 /*
