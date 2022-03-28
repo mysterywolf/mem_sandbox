@@ -34,6 +34,8 @@ char *mem_sandbox_strdup(mem_sandbox_t p_sandbox, const char *s); //沙箱版str
 char *mem_sandbox_strndup(mem_sandbox_t p_sandbox, const char *s, size_t n); //沙箱版strndup函数
 ```
 
+## 软件包位置
+位于tools分类下的mem_sandbox
 
 
 ## 注意
